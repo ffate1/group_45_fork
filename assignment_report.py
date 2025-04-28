@@ -47,5 +47,24 @@ document.multi_cell(w=0,
                     align='L',
                     fill=False)
 
+# Adding a logo to the PDF
+document.image("HUB24.jpg", x=20, y=10, w=30)
+
+# Adding subtitles
+document.set_font(family='Arial',
+                  style='',
+                  size=14)
+document.set_xy(20, 40) 
+document.cell(w=0, h=10, txt='Company Overview', border=False, ln=1, align='L', fill=False)
+subtitle_text = 'Company Overview'
+
+# Add commentary on the company overview
+with open("Company Overview.txt", "r") as file:
+    company_overview_text = file.read()
+document.set_font(family='Arial',
+                  size=10)
+document.set_xy(20, 50)
+document.multi_cell(w=0, h=5, txt=company_overview_text, border=False, align='L', fill=False)
+
 # Saving contents to PDF file
 document.output(name='sample_report.pdf')
